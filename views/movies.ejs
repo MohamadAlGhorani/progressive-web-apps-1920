@@ -3,10 +3,12 @@
 <h1>Movies</h1>
 <div>
 <% moviesData.forEach(function(movie) { %>
-	<a href="/movies/<%- movie.id %>"><%- movie.title %></a>
-	<p><%- movie.release_date %></p>
-	<p><%- movie.vote_average %></p>
-	<img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="Movie poster of <%= movie.original_title %>." class="movie-poster">
+	<a href="/movies/<%- movie.id %>">
+		<p><%- movie.title %></p>
+		<p><%- movie.release_date %></p>
+		<p><%- movie.vote_average %></p>
+		<img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="Movie poster of <%= movie.original_title %>." class="movie-poster">
+	</a>
 <% }) %>
 </div>
 

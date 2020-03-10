@@ -61,6 +61,26 @@ router.get("/search", function(req, res) {
   );
 });
 
+router.get("/genres/:name/:id", function(req, res) {
+  request(
+    `https://api.themoviedb.org/3/discover/movie?api_key=2dd412e3756049df0163f542e7863598&sort_by=popularity.desc&with_genres=${req.params.id}`,
+    {
+      json: true
+    },
+    function(err, requestRes, body) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.render("filterResults", {
+          title: `Genere ${req.params.id}`,
+          moviesData: body.results,
+          genreName: req.params.name
+        });
+      }
+    }
+  );
+});
+
 router.get("/:id", function(req, res) {
   request(
     `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=2dd412e3756049df0163f542e7863598`,

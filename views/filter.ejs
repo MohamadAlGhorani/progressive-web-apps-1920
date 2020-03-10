@@ -2,7 +2,7 @@
 <a href="/movies">back</a>
 <h1>Gneres</h1>
 <% genresData.forEach(function(genre) { %>
-	<a href="/movies/<%= genre.id %>"><%- genre.name %></a>
+	<a href="/movies/genres/<%= genre.name %>/<%= genre.id %>"><%- genre.name %></a>
 <% }) %>
 
 <%- include ./partials/footer.ejs %>

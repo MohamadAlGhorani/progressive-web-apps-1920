@@ -1,0 +1,8 @@
+<%- include ./partials/head.ejs %>
+<a href="/movies/genres">back</a>
+<h1><%= genreName %></h1>
+<% moviesData.forEach(function(movie) { %>
+	<a href="/movies/<%- movie.id %>"><%- movie.title %></a>
+<% }) %>
+
+<%- include ./partials/footer.ejs %>

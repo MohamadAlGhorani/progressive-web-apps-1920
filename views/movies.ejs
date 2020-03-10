@@ -2,7 +2,7 @@
 
 <h1>Movies</h1>
 <% moviesData.forEach(function(movie) { %>
-	<a href="/movies/<%= movie.id %>"><%- movie.title %></a>
+	<a href="/movies/<%- movie.id %>"><%- movie.title %></a>
 <% }) %>
 
 <%- include ./partials/footer.ejs %>

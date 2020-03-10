@@ -1,5 +1,6 @@
 const express = require("express");
 const request = require("request");
+const fetch = require("node-fetch");
 const router = express.Router();
 
 router.get("/", function(req, res) {
@@ -9,7 +10,6 @@ router.get("/", function(req, res) {
       json: true
     },
     function(err, requestRes, body) {
-      console.log(body.results[0]);
       if (err) {
         res.send(err);
       } else {
@@ -81,23 +81,42 @@ router.get("/genres/:name/:id", function(req, res) {
   );
 });
 
+// router.get("/:id", function(req, res) {
+//   request(
+//     `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=2dd412e3756049df0163f542e7863598`,
+//     {
+//       json: true
+//     },
+//     function(err, requestRes, body) {
+//       if (err) {
+//         res.send(err);
+//       } else {
+//         res.render("movie", {
+//           title: `Movie ${req.params.id}`,
+//           movie: body
+//         });
+//       }
+//     }
+//   );
+// });
+
 router.get("/:id", function(req, res) {
-  request(
-    `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=2dd412e3756049df0163f542e7863598`,
-    {
-      json: true
-    },
-    function(err, requestRes, body) {
-      if (err) {
-        res.send(err);
-      } else {
-        res.render("movie", {
-          title: `Movie ${req.params.id}`,
-          movie: body
-        });
+  Promise.all([
+    fetch(
+      `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=2dd412e3756049df0163f542e7863598`
+    ).then(response => response.json()),
+    fetch(
+      `https://api.themoviedb.org/3/movie/${req.params.id}/videos?api_key=2dd412e3756049df0163f542e7863598`
+    ).then(response => response.json())
+  ]).then(([details, videos]) => {
+    res.render("movie", {
+      title: details.original_title,
+      movie: {
+        ...details,
+        videos: videos.results
       }
-    }
-  );
+    });
+  });
 });
 
 module.exports = router;

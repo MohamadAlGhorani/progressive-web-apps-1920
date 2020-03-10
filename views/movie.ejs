@@ -2,5 +2,17 @@
 <a href="/movies">back</a>
 <h1><%- movie.title %></h1>
 <p><%- movie.overview %></p>
+<p>Rating: <span><%= movie.vote_average %></span></p>
+
+
+<%
+  if (movie.videos.length) {
+  const video = movie.videos.find(video => video.type === 'Trailer') || movie.videos[0]
+%>
+    <h3 class="h1"><%= video.name %></h3>
+    <div class="video">
+        <iframe width="1920" height="1080" src="http://www.youtube-nocookie.com/embed/<%= video.key %>?modestbranding=1&autoplay=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&disablekb=1&playlist=IsBInsOj8TY" frameborder="0"></iframe>
+    </div>
+<% } %>
 
 <%- include ./partials/footer.ejs %>

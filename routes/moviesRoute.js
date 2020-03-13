@@ -3,14 +3,30 @@ const fetch = require("node-fetch");
 const router = express.Router();
 
 router.get("/", function (req, res) {
-  fetch("https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=2dd412e3756049df0163f542e7863598")
-    .then(async response => {
-      const moviesData = await response.json()
-      res.render('movies', {
-        title: 'Movies',
-        moviesData
-      });
-    })
+  Promise.all([
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=2dd412e3756049df0163f542e7863598`
+    ).then(response => response.json()),
+    fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=2dd412e3756049df0163f542e7863598&language=en-US&page=1`
+    ).then(response => response.json()),
+    fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=2dd412e3756049df0163f542e7863598&language=en-US&page=1`
+    ).then(response => response.json()),
+    fetch(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=2dd412e3756049df0163f542e7863598&language=en-US&page=1`
+    ).then(response => response.json())
+  ]).then(([popular, topRated, upcoming, nowPlaying]) => {
+    res.render("movies", {
+      title: "Movies",
+      moviesData: {
+        ...popular,
+        topRated: topRated.results,
+        upcoming: upcoming.results,
+        nowPlaying: nowPlaying.results
+      }
+    });
+  });
 });
 
 router.get("/genres", function (req, res) {

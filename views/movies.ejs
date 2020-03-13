@@ -1,6 +1,6 @@
 <%- include ./partials/head.ejs %>
-
-<h1>Movies</h1>
+<section>
+<h2>Popular movies</h2>
 <div>
 <% moviesData.results.forEach(function(movie) { %>
 	<a href="/movies/<%- movie.id %>">
@@ -11,5 +11,45 @@
 	</a>
 <% }) %>
 </div>
+</section>
+<section>
+	<h2>Top rated movies</h2>
+	<div>
+	<% moviesData.topRated.forEach(function(movie) { %>
+		<a href="/movies/<%- movie.id %>">
+			<p><%- movie.title %></p>
+			<p><%- movie.release_date %></p>
+			<p><%- movie.vote_average %></p>
+			<img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="Movie poster of <%= movie.original_title %>." class="movie-poster">
+		</a>
+	<% }) %>
+	</div>
+</section>
+<section>
+	<h2>Upcoming movies</h2>
+	<div>
+	<% moviesData.upcoming.forEach(function(movie) { %>
+		<a href="/movies/<%- movie.id %>">
+			<p><%- movie.title %></p>
+			<p><%- movie.release_date %></p>
+			<p><%- movie.vote_average %></p>
+			<img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="Movie poster of <%= movie.original_title %>." class="movie-poster">
+		</a>
+	<% }) %>
+	</div>
+</section>
+<section>
+	<h2>Now playing movies</h2>
+	<div>
+	<% moviesData.nowPlaying.forEach(function(movie) { %>
+		<a href="/movies/<%- movie.id %>">
+			<p><%- movie.title %></p>
+			<p><%- movie.release_date %></p>
+			<p><%- movie.vote_average %></p>
+			<img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="Movie poster of <%= movie.original_title %>." class="movie-poster">
+		</a>
+	<% }) %>
+	</div>
+</section>
 
 <%- include ./partials/footer.ejs %>

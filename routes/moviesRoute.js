@@ -1,20 +1,21 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const router = express.Router();
+require('dotenv').config()
 
 router.get("/", function (req, res) {
   Promise.all([
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=2dd412e3756049df0163f542e7863598`
+      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.movieDbKey}`
     ).then(response => response.json()),
     fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=2dd412e3756049df0163f542e7863598&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.movieDbKey}&language=en-US&page=1`
     ).then(response => response.json()),
     fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=2dd412e3756049df0163f542e7863598&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.movieDbKey}&language=en-US&page=1`
     ).then(response => response.json()),
     fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=2dd412e3756049df0163f542e7863598&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.movieDbKey}&language=en-US&page=1`
     ).then(response => response.json())
   ]).then(([popular, topRated, upcoming, nowPlaying]) => {
     res.render("movies", {
@@ -30,7 +31,7 @@ router.get("/", function (req, res) {
 });
 
 router.get("/genres", function (req, res) {
-  fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=2dd412e3756049df0163f542e7863598")
+  fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.movieDbKey}`)
     .then(async response => {
       const genresData = await response.json()
       res.render('filter', {
@@ -41,7 +42,7 @@ router.get("/genres", function (req, res) {
 });
 
 router.get("/search", function (req, res) {
-  fetch(`https://api.themoviedb.org/3/search/movie?query=${req.query.query}&api_key=2dd412e3756049df0163f542e7863598`)
+  fetch(`https://api.themoviedb.org/3/search/movie?query=${req.query.query}&api_key=${process.env.movieDbKey}`)
     .then(async response => {
       const moviesData = await response.json()
       res.render('results', {
@@ -54,7 +55,7 @@ router.get("/search", function (req, res) {
 
 
 router.get("/genres/:name/:id", function (req, res) {
-  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=2dd412e3756049df0163f542e7863598&sort_by=popularity.desc&with_genres=${req.params.id}`)
+  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.movieDbKey}&sort_by=popularity.desc&with_genres=${req.params.id}`)
     .then(async response => {
       const moviesData = await response.json()
       res.render('filterResults', {
@@ -68,10 +69,10 @@ router.get("/genres/:name/:id", function (req, res) {
 router.get("/:id", function (req, res) {
   Promise.all([
     fetch(
-      `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=2dd412e3756049df0163f542e7863598`
+      `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.movieDbKey}`
     ).then(response => response.json()),
     fetch(
-      `https://api.themoviedb.org/3/movie/${req.params.id}/videos?api_key=2dd412e3756049df0163f542e7863598`
+      `https://api.themoviedb.org/3/movie/${req.params.id}/videos?api_key=${process.env.movieDbKey}`
     ).then(response => response.json())
   ]).then(([details, videos]) => {
     res.render("movie", {

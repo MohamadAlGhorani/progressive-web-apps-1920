@@ -8,7 +8,13 @@
     "example": "examples"
   },
   "scripts": {
+    "prestart": "npm run build:css && npm run build:js",
     "start": "nodemon server.js",
+    "prebuild:css": "rimraf ./static",
+    "build:css": "node scripts/build-css.js",
+    "build:js": "node scripts/build-js.js",
+    "watch:js": "chokidar 'puplic/js/*.js' --command 'npm run build:js'",
+    "watch:css": "chokidar 'puplic/css/*.css' --command 'npm run build:css'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +31,16 @@
     "ejs": "^2.6.1",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
+    "node-gyp": "^6.1.0",
     "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "chokidar": "^3.3.1",
+    "dotenv": "^8.2.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "rimraf": "^3.0.2"
   }
 }

@@ -13,8 +13,8 @@
     "prebuild": "rimraf ./static",
     "build:css": "node scripts/build-css.js",
     "build:js": "node scripts/build-js.js",
-    "watch:js": "chokidar 'puplic/js/*.js' --command 'npm run build:js'",
-    "watch:css": "chokidar 'puplic/css/*.css' --command 'npm run build:css'",
+    "watch:js": "chokidar 'src/js/*.js' --command 'npm run build:js'",
+    "watch:css": "chokidar 'src/css/*.css' --command 'npm run build:css'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

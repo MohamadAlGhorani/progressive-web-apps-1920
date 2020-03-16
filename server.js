@@ -11,8 +11,9 @@ app
     .set("view engine", "ejs")
     .set("views", "views")
 
-    .use(express.static("public"))
+    .use(express.static('static'))
     .use("/movies", moviesRouter)
+
 
     .listen(config.port, function () {
         console.log(`Application started on port: ${config.port}`);

@@ -1,0 +1,1 @@
+a{display:block;text-decoration:none}section div{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;-ms-scroll-snap-type:x mandatory;scroll-snap-type:x mandatory;-webkit-scroll-snap-destination:0 0;-webkit-overflow-scrolling:touch}section div::-webkit-scrollbar{display:none}section div a{margin-right:20px;scroll-snap-align:center}

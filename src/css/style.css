@@ -4,6 +4,10 @@ a {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 section div {
   display: flex;
   flex-wrap: nowrap;

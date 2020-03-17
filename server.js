@@ -7,6 +7,11 @@ const config = {
 
 const app = express();
 
+app.get("/", function(req, res) {
+  // Send a plain string using res.send();
+  window.location = "/movies";
+});
+
 app
   .set("view engine", "ejs")
   .set("views", "views")

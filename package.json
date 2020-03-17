@@ -9,6 +9,7 @@
   },
   "scripts": {
     "prestart": "npm run build",
+    "predev": "npm run build",
     "dev": "nodemon server.js",
     "start": "node server.js",
     "prebuild": "rimraf ./static",
@@ -18,7 +19,7 @@
     "build:assets": "node scripts/build-assets.js",
     "watch": "run-p watch:*",
     "watch:js": "chokidar 'src/js/*.js' --command 'npm run build:js'",
-    "watch:css": "chokidar 'src/css/*.css' --command 'npm run build:css'",
+    "watch:css": "chokidar 'src/css/style.css' --command 'npm run build:css'",
     "watch:assets": "chokidar 'src/**/*.*' --command 'npm run build:assets'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -40,7 +41,6 @@
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
-    "chokidar": "^3.3.1",
     "chokidar-cli": "^2.1.0",
     "dotenv": "^8.2.0",
     "gulp": "^4.0.2",

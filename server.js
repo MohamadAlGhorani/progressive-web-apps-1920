@@ -2,7 +2,7 @@ const express = require("express");
 const moviesRouter = require("./routes/moviesRoute");
 
 const config = {
-    port: 3000 || process.env.PORT
+    port: process.env.PORT || 3000
 };
 
 const app = express();

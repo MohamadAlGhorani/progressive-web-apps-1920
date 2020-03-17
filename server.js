@@ -7,10 +7,6 @@ const config = {
 
 const app = express();
 
-(function() {
-  window.location = "/movies";
-})();
-
 app
   .set("view engine", "ejs")
   .set("views", "views")

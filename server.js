@@ -9,6 +9,7 @@ const app = express();
 
 app.get("/", function(req, res) {
   // Send a plain string using res.send();
+  console.log("hii");
   window.location = "/movies";
 });
 

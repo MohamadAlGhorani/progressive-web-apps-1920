@@ -13,7 +13,7 @@ screenshot here
 - Run ``` npm run dev ``` in your terminal to open the porject in your brwoser using localhost:3000/
 
 ## APi
-I used Moviedb api to get all the data about the movies and their video terialers.
+I used [THE MOVIE DB](https://www.themoviedb.org/?language=en-US) api to get all the data about the movies and their video terialers.
 If you want to use this API you have to make an account to ask for a key that you can use to access the data.
 
 ## License

@@ -17,4 +17,4 @@ I used Moviedb api to get all the data about the movies and their video terialer
 If you want to use this API you have to make an account to ask for a key that you can use to access the data.
 
 ## License
-License is [MIT]() 
+License is [MIT](https://github.com/MohamadAlGhorani/progressive-web-apps-1920/blob/master/LICENSE) 

@@ -10,7 +10,7 @@ screenshot here
 - Clone this repository.
 - Navigate to the folder of the repository using your terminal.
 - Write in your terminal ```npm install``` to download the node modules.
-- run ``` npm run dev ``` to open the porject in your brwoser using localhost:3000/
+- Run ``` npm run dev ``` in your terminal to open the porject in your brwoser using localhost:3000/
 
 ## APi
 I used Moviedb api to get all the data about the movies and their video terialers.

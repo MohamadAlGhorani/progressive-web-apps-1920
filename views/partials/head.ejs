@@ -5,19 +5,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title><%- title %></title>
-	<link rel="shortcut icon" href="https://findicons.com/files/icons/1254/flurry_system/256/movies.png" type="image/png" />
+	<link rel="shortcut icon" href="/icons/icon-72x72.png" type="image/png" />
 	<link rel="manifest" href="/manifest.json"> 
 	<script defer src="/index.js"></script>
 	<link rel="stylesheet" href="/index.css">
 </head>
 <body>
 <header>
-	<form method="get" action="/movies/search">
-		<label>
-			search
-			<input type="search" name="query">
-		</label>
-	</form>
-	<a href="/movies/genres">Genres</a>
+	<div>
+		<a href="/movies"><h1> <img class="logo" src="/icons/logo.png" alt="logo"> Which Movies</h1></a>
+	</div>
+	<nav>	
+		<a href="/movies/genres">Genres</a>
+		<form method="get" action="/movies/search">
+			<label for="search">search</label>
+			<input id="search" type="search" name="query">
+		</form>
+	</nav>
 </header>
 <main>

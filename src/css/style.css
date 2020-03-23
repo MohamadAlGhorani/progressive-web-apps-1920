@@ -184,6 +184,7 @@ video iframe {
   }
   header div {
     width: 100%;
+    margin-bottom: 1em;
   }
   header nav {
     width: 100%;

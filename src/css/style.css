@@ -167,3 +167,25 @@ video iframe {
 .rating {
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  header {
+    display: block;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  main {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  section {
+    margin-bottom: 1.5em;
+  }
+  header div {
+    width: 100%;
+  }
+  header nav {
+    width: 100%;
+  }
+}

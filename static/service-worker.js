@@ -1,8 +1,8 @@
-const CORE_CACHE_VERSION = "v10";
+const CORE_CACHE_VERSION = "v3";
 const CORE_ASSETS = ["/movies/offline", "/index.css", "/index.js"];
 
 self.addEventListener("install", event => {
-  //console.log("Installing service worker");
+  console.log("Installing service worker");
 
   event.waitUntil(
     caches.open(CORE_CACHE_VERSION).then(function(cache) {
@@ -12,14 +12,14 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("activate", event => {
-  //console.log("Activating service worker");
+  console.log("Activating service worker");
   event.waitUntil(clients.claim());
 });
 
 self.addEventListener("fetch", event => {
-  //console.log("Fetch event: ", event.request.url);
+  console.log("Fetch event: ", event.request.url);
   if (isCoreGetRequest(event.request)) {
-    //console.log("Core get request: ", event.request.url);
+    console.log("Core get request: ", event.request.url);
     // cache only strategy
     event.respondWith(
       caches
@@ -27,7 +27,7 @@ self.addEventListener("fetch", event => {
         .then(cache => cache.match(event.request.url))
     );
   } else if (isHtmlGetRequest(event.request)) {
-    //console.log("html get request", event.request.url);
+    console.log("html get request", event.request.url);
     // generic fallback
     event.respondWith(
       caches

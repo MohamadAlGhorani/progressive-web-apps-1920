@@ -188,4 +188,14 @@ video iframe {
   header nav {
     width: 100%;
   }
+  a {
+    font-size: 18px;
+  }
+  label {
+    font-size: 18px;
+  }
+  main a {
+    font-size: 18px;
+    margin-top: 1em;
+  }
 }

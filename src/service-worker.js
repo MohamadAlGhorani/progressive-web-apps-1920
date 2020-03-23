@@ -1,11 +1,11 @@
-const CORE_CACHE_VERSION = "v9";
+const CORE_CACHE_VERSION = "v10";
 const CORE_ASSETS = ["/movies/offline", "/index.css", "/index.js"];
 
 self.addEventListener("install", event => {
   console.log("Installing service worker");
 
   event.waitUntil(
-    caches.open(CORE_CACHE_VERSION).then(function(cache) {
+    caches.open(CORE_CACHE_VERSION).then(function (cache) {
       return cache.addAll(CORE_ASSETS).then(() => self.skipWaiting());
     })
   );
@@ -23,24 +23,24 @@ self.addEventListener("fetch", event => {
     // cache only strategy
     event.respondWith(
       caches
-        .open(CORE_CACHE_VERSION)
-        .then(cache => cache.match(event.request.url))
+      .open(CORE_CACHE_VERSION)
+      .then(cache => cache.match(event.request.url))
     );
   } else if (isHtmlGetRequest(event.request)) {
     console.log("html get request", event.request.url);
     // generic fallback
     event.respondWith(
       caches
-        .open("html-cache")
-        .then(cache => cache.match(event.request.url))
-        .then(response =>
-          response ? response : fetchAndCache(event.request, "html-cache")
-        )
-        .catch(e => {
-          return caches
-            .open(CORE_CACHE_VERSION)
-            .then(cache => cache.match("/movies/offline"));
-        })
+      .open("html-cache")
+      .then(cache => cache.match(event.request.url))
+      .then(response =>
+        response ? response : fetchAndCache(event.request, "html-cache")
+      )
+      .catch(e => {
+        return caches
+          .open(CORE_CACHE_VERSION)
+          .then(cache => cache.match("/movies/offline"));
+      })
     );
   }
 });

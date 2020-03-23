@@ -37,12 +37,14 @@ header nav {
   justify-content: space-between;
   width: 50%;
 }
+
 header nav form {
   display: flex;
   justify-content: space-between;
   width: 80%;
   margin-left: 1em;
 }
+
 header nav form input {
   width: 100%;
 }
@@ -53,7 +55,7 @@ header nav form label {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-header > div > h1 {
+header>div>h1 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin-bottom: 0;
@@ -154,16 +156,20 @@ section div a p:nth-of-type(2) {
 .video {
   width: 100%;
 }
+
 video iframe {
   width: 100%;
 }
+
 .overview {
   width: 700px;
 }
+
 .rating span {
   color: #5e00ff;
   font-weight: bold;
 }
+
 .rating {
   font-weight: bold;
 }
@@ -175,26 +181,33 @@ video iframe {
     padding-right: 0.5em;
     margin-bottom: 0.5em;
   }
+
   main {
     padding-left: 0.5em;
     padding-right: 0.5em;
   }
+
   section {
     margin-bottom: 1.5em;
   }
+
   header div {
     width: 100%;
     margin-bottom: 1em;
   }
+
   header nav {
     width: 100%;
   }
+
   a {
     font-size: 18px;
   }
+
   label {
     font-size: 18px;
   }
+
   main a {
     font-size: 18px;
     margin-top: 1em;

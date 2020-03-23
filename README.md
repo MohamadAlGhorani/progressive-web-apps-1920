@@ -21,10 +21,10 @@ resultaat na het gebruik maken van compression
 Ik heb een test gedraait op lighthouse en uit de test kwam dat ik een paar dingin makkelijk kan aanpassen om performance van mijn app te verbeteren.
 
 Ik heb de volgende issues opgelost die uit de test kwamen.
-- adding meta descriptions ```html <meta name="Description" content="Author: Mohamad Al Ghorani,
+- adding meta descriptions ``` <meta name="Description" content="Author: Mohamad Al Ghorani,
 	Designer: Mohamad Al Ghorani, Category: Movies,">```
-- adding meta name theme-color 		```html <meta name="theme-color" content="#5e00ff"/> ```
-- adding apple touch icon```html <link rel="apple-touch-icon" href="/icons/logo.png">```
+- adding meta name theme-color 		``` <meta name="theme-color" content="#5e00ff"/> ```
+- adding apple touch icon``` <link rel="apple-touch-icon" href="/icons/logo.png">```
 - adding max-age for the cache 
 ```js
  app.use((req, res, next) => {
@@ -34,7 +34,7 @@ Ik heb de volgende issues opgelost die uit de test kwamen.
 ```
 - ik heb alle ```js console.log()``` verwijdert van mijn app
 ### Visual stability:
-Wat ik gedaan heb om deze probleem op te lossen is het vaste ```css width:;  height:;``` voor de afbeeldingen in de app.
+Wat ik gedaan heb om deze probleem op te lossen is het vaste ``` width:;  height:;``` voor de afbeeldingen in de app.
 op deze manier wordt er geen onverwachte shifting in het layout als de gebruiker op een traage verbinding is.
 ## Installation
 - Download [Node.js](https://nodejs.org/en/) if you don't have it. 

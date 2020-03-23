@@ -13,9 +13,15 @@ app.get("/", function (req, res) {
 });
 
 app
+    .enable('etag') // use strong etags
+    .set('etag', 'strong') // same
     .set("view engine", "ejs")
     .set("views", "views")
 
+    .use((req, res, next) => {
+        res.header('Cache-Control', 'max-age=2592000000');
+        next();
+    })
     .use(express.static("static"))
     .use("/movies", moviesRouter)
 

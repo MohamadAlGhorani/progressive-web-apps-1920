@@ -34,12 +34,12 @@ self.addEventListener("fetch", event => {
             .open("html-cache")
             .then(cache => cache.match(event.request.url))
             .then(response =>
-                response ? response : fetchAndCache(event.request, "html-cache")
+                response.headers.match ? response : fetchAndCache(event.request, "html-cache")
             )
             .catch(e => {
                 return caches
                     .open(CORE_CACHE_VERSION)
-                    .then(cache => cache.match("/offline"));
+                    .then(cache => cache.match("/movies/offline"));
             })
         );
     }

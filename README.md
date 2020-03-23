@@ -38,7 +38,8 @@ Wat ik gedaan heb om deze probleem op te lossen is het vaste ``` width:;  height
 op deze manier wordt er geen onverwachte shifting in het layout als de gebruiker op een traage verbinding is.
 
 ### Font-system
-Om het probleem op te lossen van het custom fonts heb ik voor mijn hele applicatie font system gebruikt om hem meer app-like te maken ```* {
+Om het probleem op te lossen van het custom fonts heb ik voor mijn hele applicatie font system gebruikt 
+om hem meer app-like te maken ```* {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }```

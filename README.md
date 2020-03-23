@@ -36,6 +36,12 @@ Ik heb de volgende issues opgelost die uit de test kwamen.
 ### Visual stability:
 Wat ik gedaan heb om deze probleem op te lossen is het vaste ``` width:;  height:;``` voor de afbeeldingen in de app.
 op deze manier wordt er geen onverwachte shifting in het layout als de gebruiker op een traage verbinding is.
+
+### Font-system
+Om het probleem op te lossen van het custom fonts heb ik voor mijn hele applicatie font system gebruikt om hem meer app-like te makem ```* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}```
 ## Installation
 - Download [Node.js](https://nodejs.org/en/) if you don't have it. 
 - Clone this repository.

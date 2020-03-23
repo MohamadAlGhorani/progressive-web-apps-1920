@@ -17,6 +17,9 @@ resultaat voor het gebruik maken van compression
 <img width="980" alt="Screenshot 2020-03-23 at 17 15 17" src="https://user-images.githubusercontent.com/45425087/77338429-a60ac880-6d2a-11ea-89cb-c0b3dcd56b9c.png">
 resultaat na het gebruik maken van compression 
 <img width="986" alt="Screenshot 2020-03-23 at 17 15 09" src="https://user-images.githubusercontent.com/45425087/77338481-b7ec6b80-6d2a-11ea-9fd3-eec89f266950.png">
+### Load responsiveness: 
+#### Service-worker
+#### manifest.json
 ### The low hanging fruits
 Ik heb een test gedraait op lighthouse en uit de test kwam dat ik een paar dingin makkelijk kan aanpassen om performance van mijn app te verbeteren.
 

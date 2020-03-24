@@ -35,7 +35,7 @@ resultaat na het gebruik maken van compression
 #### Service-worker
 #### manifest.json
 ### The low hanging fruits
-Ik heb een test gedraait op lighthouse en uit de test kwam dat ik een paar dingin makkelijk kan aanpassen om performance van mijn app te verbeteren.
+Ik heb een test gedraait op lighthouse en uit de test kwam dat ik een paar dingin makkelijk kan aanpassen om mijn app te verbeteren.
 
 Ik heb de volgende issues opgelost die uit de test kwamen.
 - adding meta descriptions ``` <meta name="Description" content="Author: Mohamad Al Ghorani,

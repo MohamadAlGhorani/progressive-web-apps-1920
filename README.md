@@ -12,6 +12,12 @@ compression is ondersteund door gizp.
 const compression = require("compression");
 app.use(compression())
 ```
+Daarnaast door gulp clean css te gebruiken kan ik de bestanden allemaal aan elkaar toevoegen met gulp concat en met ```js cleanCss()``` heb ik mijn CSS minifyed.
+```js
+  .src(["./src/css/*.css"])
+  .pipe(concat("index.css"))
+  .pipe(cleanCss())
+```
 Daarna heb ik hem getest op [WebPageTest](https://www.webpagetest.org/)
 resultaat voor het gebruik maken van compression 
 <img width="980" alt="Screenshot 2020-03-23 at 17 15 17" src="https://user-images.githubusercontent.com/45425087/77338429-a60ac880-6d2a-11ea-89cb-c0b3dcd56b9c.png">

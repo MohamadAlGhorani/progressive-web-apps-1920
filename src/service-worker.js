@@ -1,4 +1,4 @@
-const CORE_CACHE_VERSION = "v1";
+const CORE_CACHE_VERSION = "v2";
 const CORE_ASSETS = ["/movies/offline", "/index.css", "/index.js"];
 
 self.addEventListener("install", event => {

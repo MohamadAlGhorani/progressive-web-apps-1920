@@ -48,7 +48,7 @@ header nav form label {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-header>div>h1 {
+header>div a h1 {
   margin-bottom: 0;
   font-size: 28px;
 }
@@ -167,7 +167,7 @@ video iframe {
     margin-bottom: 0.5em;
   }
 
-  header>div>h1 {
+  header>div a h1 {
     font-size: 24px;
   }
 

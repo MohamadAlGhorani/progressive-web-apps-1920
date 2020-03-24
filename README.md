@@ -10,7 +10,7 @@ Which movies web application is an application for searching and watching traila
 - Overview page with: Popular movies, Top rated movies, Upcoming movies, Now playing movies
 - Details page for each movie with trailars
 - Filter on genres 
-_ search function to search for a specific movie or title 
+- search function to search for a specific movie or title 
 
 ## Optimize the performance
 ### Perceived load speed:

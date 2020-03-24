@@ -43,7 +43,7 @@ Ik heb de volgende issues opgelost die uit de test kwamen.
 ```
 - ik heb alle ```js console.log()``` verwijdert van mijn app
 ### Visual stability:
-Wat ik gedaan heb om deze probleem op te lossen is het vaste ``` width:;  height:;``` voor de afbeeldingen in de app.
+Wat ik gedaan heb om deze probleem op te lossen is het vaste ``` width:;  height:;``` voor de afbeeldingen te geven in de app.
 op deze manier wordt er geen onverwachte shifting in het layout als de gebruiker op een traage verbinding is.
 
 ### Font-system

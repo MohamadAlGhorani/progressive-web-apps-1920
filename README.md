@@ -45,7 +45,7 @@ Dit is de eerste keer de gebruiker de website bezoekt.
 
 Dit is de tweede keer de gebruiker de website bezoekt.
 
-558" alt="Screenshot 2020-03-24 at 13 55 56" src="https://user-images.githubusercontent.com/45425087/77427750-330b5b80-6dd7-11ea-9dbe-b21966d4053a.png">
+<img width="558" alt="Screenshot 2020-03-24 at 13 55 56" src="https://user-images.githubusercontent.com/45425087/77427750-330b5b80-6dd7-11ea-9dbe-b21966d4053a.png">
 
 Dus snel zoals de licht.
 

@@ -3,24 +3,21 @@ const fetch = require("node-fetch");
 const router = express.Router();
 require("dotenv").config();
 
-// router.use((req, res, next) => {
-//   res.header('Cache-Control', 'max-age=2592000000');
-//   next();
-// });
+const apiUrl = "https://api.themoviedb.org/3/"
 
 router.get("/", function (req, res, next) {
   Promise.all([
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.movieDbKey}`
+      `${apiUrl}discover/movie?sort_by=popularity.desc&api_key=${process.env.movieDbKey}`
     ).then(response => response.json()),
     fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.movieDbKey}&language=en-US&page=1`
+      `${apiUrl}movie/top_rated?api_key=${process.env.movieDbKey}&language=en-US&page=1`
     ).then(response => response.json()),
     fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.movieDbKey}&language=en-US&page=1`
+      `${apiUrl}movie/upcoming?api_key=${process.env.movieDbKey}&language=en-US&page=1`
     ).then(response => response.json()),
     fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.movieDbKey}&language=en-US&page=1`
+      `${apiUrl}movie/now_playing?api_key=${process.env.movieDbKey}&language=en-US&page=1`
     ).then(response => response.json())
   ]).then(([popular, topRated, upcoming, nowPlaying]) => {
     res.header('Cache-Control', 'max-age=2592000000');
@@ -45,7 +42,7 @@ router.get("/offline", function (req, res) {
 
 router.get("/genres", function (req, res) {
   fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.movieDbKey}`
+    `${apiUrl}genre/movie/list?api_key=${process.env.movieDbKey}`
   ).then(async response => {
     const genresData = await response.json();
     res.render("filter", {
@@ -57,7 +54,7 @@ router.get("/genres", function (req, res) {
 
 router.get("/search", function (req, res) {
   fetch(
-    `https://api.themoviedb.org/3/search/movie?query=${req.query.query}&api_key=${process.env.movieDbKey}`
+    `${apiUrl}search/movie?query=${req.query.query}&api_key=${process.env.movieDbKey}`
   ).then(async response => {
     const moviesData = await response.json();
     res.render("results", {
@@ -70,7 +67,7 @@ router.get("/search", function (req, res) {
 
 router.get("/genres/:name/:id", function (req, res) {
   fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.movieDbKey}&sort_by=popularity.desc&with_genres=${req.params.id}`
+    `${apiUrl}discover/movie?api_key=${process.env.movieDbKey}&sort_by=popularity.desc&with_genres=${req.params.id}`
   ).then(async response => {
     const moviesData = await response.json();
     res.render("filterResults", {
@@ -84,10 +81,10 @@ router.get("/genres/:name/:id", function (req, res) {
 router.get("/:id", function (req, res) {
   Promise.all([
     fetch(
-      `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.movieDbKey}`
+      `${apiUrl}movie/${req.params.id}?api_key=${process.env.movieDbKey}`
     ).then(response => response.json()),
     fetch(
-      `https://api.themoviedb.org/3/movie/${req.params.id}/videos?api_key=${process.env.movieDbKey}`
+      `${apiUrl}movie/${req.params.id}/videos?api_key=${process.env.movieDbKey}`
     ).then(response => response.json())
   ]).then(([details, videos]) => {
     res.render("movie", {

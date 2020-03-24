@@ -1,9 +1,17 @@
 # Progressive Web Apps @cmda-minor-web · 2019-2020
 screenshot here
 ## [online Demo](https://which-movies.herokuapp.com/movies)
+
 ## The concept
 ### which-movies
+Which movies web application is an application for searching and watching trailars from all the movies and to get information about the movies and their ratings so you can eazy choose a movie to watch.
+
 ## Features
+- Overview page with: Popular movies, Top rated movies, Upcoming movies, Now playing movies
+- Details page for each movie with trailars
+- Filter on genres 
+_ search function to search for a specific movie or title 
+
 ## Optimize the performance
 ### Perceived load speed:
 Wat ik gedaan heb om deze te optimizen is dat ik een [compression](https://github.com/expressjs/compression) heb gebruikt om het laden van de pagina sneller te maken.

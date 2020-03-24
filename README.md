@@ -1,5 +1,7 @@
 # Progressive Web Apps @cmda-minor-web · 2019-2020
-screenshot here
+
+<img width="1280" alt="Screenshot 2020-03-24 at 13 53 10" src="https://user-images.githubusercontent.com/45425087/77427516-d7d96900-6dd6-11ea-8c28-b812aa3b11eb.png">
+
 ## [online Demo](https://which-movies.herokuapp.com/movies)
 
 ## The concept
@@ -11,6 +13,8 @@ Which movies web application is an application for searching and watching traila
 - Details page for each movie with trailars
 - Filter on genres 
 - search function to search for a specific movie or title 
+- It works offline 
+- You can install it on your device.
 
 ## Optimize the performance
 ### Perceived load speed:
@@ -32,8 +36,19 @@ resultaat voor het gebruik maken van compression
 resultaat na het gebruik maken van compression 
 <img width="986" alt="Screenshot 2020-03-23 at 17 15 09" src="https://user-images.githubusercontent.com/45425087/77338481-b7ec6b80-6d2a-11ea-9fd3-eec89f266950.png">
 ### Load responsiveness: 
-#### Service-worker
-#### manifest.json
+#### [Service-worker](https://github.com/MohamadAlGhorani/progressive-web-apps-1920/blob/master/src/service-worker.js)
+Ik heb service worker toegevoegd aan mijn applicatie zodat het applicate beter in performance scored door service worker te gebruiken wekrkt mijn applicatie offline bij de paginas die eerder bezocht waren. Daarnaast als de gebruiker voor de tweede keer naar mijn website komt krijgt de gebruiker de gecahchede files en op deze manier heb ik controle over de network en over hoe snel de gebruiker iets krijgt op zijn scherm. 
+
+Dit is de eerste keer de gebruiker de website bezoekt.
+
+<img width="972" alt="Screenshot 2020-03-23 at 17 53 06" src="https://user-images.githubusercontent.com/45425087/77427580-efb0ed00-6dd6-11ea-81a1-660abd10e9ea.png">
+
+Dit is de tweede keer de gebruiker de website bezoekt.
+
+558" alt="Screenshot 2020-03-24 at 13 55 56" src="https://user-images.githubusercontent.com/45425087/77427750-330b5b80-6dd7-11ea-9dbe-b21966d4053a.png">
+
+Dus snel zoals de licht.
+
 ### The low hanging fruits
 Ik heb een test gedraait op lighthouse en uit de test kwam dat ik een paar dingin makkelijk kan aanpassen om mijn app te verbeteren.
 

@@ -16,8 +16,17 @@ Which movies web application is an application for searching and watching traila
 - It works offline 
 - You can install it on your device.
 
-## Optimize the performance
-### Perceived load speed:
+## Conclusie 
+### Server side rendering
+Client-side rendering beheert de routing dynamisch zonder de pagina te refreshen telkens wanneer een gebruiker een andere route aanvraagt. Maar weergave aan de server side kan een volledig ingevulde pagina weergeven bij de eerste keer laden voor elke route van de website, terwijl bij weergave aan de client side eerst een lege pagina wordt weergegeven. Eingelijk is het serveren van de bestanden vanuit de server en niet vanuit de client. 
+
+### Service worker
+Service worker is een tussen stap tussen de gebruiker en de server hij werkt zoals een proxy en alle request gaan eerst door de server worker heen voordat ze naar de server gaan. 
+Waarom Service worker?
+Service worker kan heel nuttig zijn. Want door het gebruik maken van een Service worker kan je paginas cachen en die paginas terug geven aan de gebruiker als hij offline is. Daarnaast Als de gebruiker voor de tweede keer komt krijgt hij de paginas instant en hoeft hij/zij niet te wachten ook als hij op een traage verbinding zit. Dus je krijgt een vollidge controle op de network.
+
+### Optimize the performance
+#### Perceived load speed:
 Wat ik gedaan heb om deze te optimizen is dat ik een [compression](https://github.com/expressjs/compression) heb gebruikt om het laden van de pagina sneller te maken.
 compression is ondersteund door gizp.
 ```js
@@ -35,8 +44,8 @@ resultaat voor het gebruik maken van compression
 <img width="980" alt="Screenshot 2020-03-23 at 17 15 17" src="https://user-images.githubusercontent.com/45425087/77338429-a60ac880-6d2a-11ea-89cb-c0b3dcd56b9c.png">
 resultaat na het gebruik maken van compression 
 <img width="986" alt="Screenshot 2020-03-23 at 17 15 09" src="https://user-images.githubusercontent.com/45425087/77338481-b7ec6b80-6d2a-11ea-9fd3-eec89f266950.png">
-### Load responsiveness: 
-#### [Service-worker](https://github.com/MohamadAlGhorani/progressive-web-apps-1920/blob/master/src/service-worker.js)
+#### Load responsiveness: 
+##### [Service-worker](https://github.com/MohamadAlGhorani/progressive-web-apps-1920/blob/master/src/service-worker.js)
 Ik heb service worker toegevoegd aan mijn applicatie zodat het applicate beter in performance scored door service worker te gebruiken wekrkt mijn applicatie offline bij de paginas die eerder bezocht waren. Daarnaast als de gebruiker voor de tweede keer naar mijn website komt krijgt de gebruiker de gecahchede files en op deze manier heb ik controle over de network en over hoe snel de gebruiker iets krijgt op zijn scherm. 
 
 Dit is de eerste keer de gebruiker de website bezoekt.
@@ -49,7 +58,7 @@ Dit is de tweede keer de gebruiker de website bezoekt.
 
 Dus snel zoals de licht.
 
-### The low hanging fruits
+#### The low hanging fruits
 Ik heb een test gedraait op lighthouse en uit de test kwam dat ik een paar dingin makkelijk kan aanpassen om mijn app te verbeteren.
 
 Ik heb de volgende issues opgelost die uit de test kwamen.
@@ -65,11 +74,11 @@ Ik heb de volgende issues opgelost die uit de test kwamen.
 });
 ```
 - ik heb alle ```js console.log()``` verwijdert van mijn app
-### Visual stability:
+#### Visual stability:
 Wat ik gedaan heb om deze probleem op te lossen is het vaste ``` width:;  height:;``` voor de afbeeldingen te geven in de app.
 op deze manier wordt er geen onverwachte shifting in het layout als de gebruiker op een traage verbinding is.
 
-### Font-system
+#### Font-system
 Om het probleem op te lossen van het custom fonts heb ik voor mijn hele applicatie font system gebruikt 
 om hem meer app-like te maken ```* {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,

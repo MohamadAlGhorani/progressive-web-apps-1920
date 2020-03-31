@@ -22,7 +22,9 @@ Client-side rendering beheert de routing dynamisch zonder de pagina te refreshen
 
 ### Service worker
 Service worker is een tussen stap tussen de gebruiker en de server hij werkt zoals een proxy en alle request gaan eerst door de server worker heen voordat ze naar de server gaan. 
+
 Waarom Service worker?
+
 Service worker kan heel nuttig zijn. Want door het gebruik maken van een Service worker kan je paginas cachen en die paginas terug geven aan de gebruiker als hij offline is. Daarnaast Als de gebruiker voor de tweede keer komt krijgt hij de paginas instant en hoeft hij/zij niet te wachten ook als hij op een traage verbinding zit. Dus je krijgt een vollidge controle op de network.
 
 ### Optimize the performance

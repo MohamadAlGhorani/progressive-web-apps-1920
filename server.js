@@ -22,11 +22,12 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"],
       fontSrc: ["'self'", "https://cdnjs.cloudflare.com"],
       imgSrc: ["'self'", "https://image.tmdb.org", "data:"],
-      frameSrc: ["https://www.youtube-nocookie.com"],
+      frameSrc: ["https://www.youtube-nocookie.com", "https://www.youtube.com"],
       connectSrc: ["'self'"]
     }
   },
-  crossOriginEmbedderPolicy: false
+  crossOriginEmbedderPolicy: false,
+  referrerPolicy: { policy: "strict-origin-when-cross-origin" }
 }));
 app.use(compression());
 

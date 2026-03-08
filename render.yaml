@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: which-movies
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: node server.js
+    envVars:
+      - key: movieDbKey
+        sync: false
+      - key: NODE_ENV
+        value: production

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const apiUrl = "https://api.themoviedb.org/3/";
-const apiKey = () => process.env.movieDbKey;
+const apiKey = () => process.env.MOVIE_DB_KEY;
 
 function tmdb(path) {
   const separator = path.includes("?") ? "&" : "?";

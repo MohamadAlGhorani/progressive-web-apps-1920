@@ -43,4 +43,4 @@ A Progressive Web App for browsing movies (which-movies). Server-side rendered E
 
 ## Environment
 
-Requires a `.env` file with `movieDbKey` set to a TMDB API key. Deployed to Heroku (see `Procfile`).
+Requires a `.env` file with `MOVIE_DB_KEY` set to a TMDB API key. Deployed to Heroku (see `Procfile`).

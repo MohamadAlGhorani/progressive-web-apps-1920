@@ -5,7 +5,7 @@ services:
     buildCommand: npm install && npm run build
     startCommand: node server.js
     envVars:
-      - key: movieDbKey
+      - key: MOVIE_DB_KEY
         sync: false
       - key: NODE_ENV
         value: production

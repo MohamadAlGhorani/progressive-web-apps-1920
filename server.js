@@ -42,5 +42,8 @@ app.get("/", function(req, res) {
 app.use("/movies", moviesRouter);
 
 app.listen(config.port, function() {
+  if (!process.env.MOVIE_DB_KEY) {
+    console.warn("WARNING: MOVIE_DB_KEY environment variable is not set. API calls will fail.");
+  }
   console.log(`Application started on port: ${config.port}`);
 });

@@ -421,6 +421,9 @@ main {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.85rem;
+}
+
+.section-header.has-padding {
   padding: 0 4%;
 }
 

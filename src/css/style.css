@@ -1438,7 +1438,8 @@ main {
   .hero-indicators { bottom: 4%; }
 
   /* Main & rows */
-  .section-header { padding: 0 3%; margin-bottom: 0.6rem; }
+  .section-header { margin-bottom: 0.6rem; }
+  .section-header.has-padding { padding: 0 3%; }
   .movie-row { padding-left: 3%; padding-right: 3%; scroll-padding-left: 3%; gap: 0.5rem; }
   .cast-row { padding-left: 3%; padding-right: 3%; }
   .detail-section-title { padding: 0 3%; font-size: 1.05rem; }

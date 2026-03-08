@@ -1,6 +1,14 @@
-<%- include ./partials/head.ejs %>
+<%- include('./partials/head.ejs') %>
 
-<h1>You are offline</h1>
+<main id="main-content">
+<div class="page-content">
+	<div class="offline-message">
+		<i class="fa-solid fa-wifi offline-icon" aria-hidden="true"></i>
+		<h1>You are offline</h1>
+		<p>Please check your internet connection and try again.</p>
+		<a href="/movies" class="btn btn-primary"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Retry</a>
+	</div>
+</div>
+</main>
 
-
-<%- include ./partials/footer.ejs %>
+<%- include('./partials/footer.ejs') %>

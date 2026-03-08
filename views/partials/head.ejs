@@ -3,28 +3,57 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Description" content="Author: Mohamad Al Ghorani,
-	Designer: Mohamad Al Ghorani, Category: Movies,">
-	<meta name="theme-color" content="#5e00ff"/>
+	<% var pageTitle = (title === 'Which Movies') ? title : title + ' — Which Movies'; %>
+	<title><%= pageTitle %></title>
+	<% var desc = (typeof metaDescription !== 'undefined' && metaDescription) ? metaDescription : 'Discover, search, and watch trailers for the latest movies. Browse by genre, see ratings, cast, and more.'; %>
+	<meta name="description" content="<%= desc %>">
+	<meta name="theme-color" content="#0a0a0a">
+	<!-- Open Graph -->
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Which Movies">
+	<meta property="og:title" content="<%= pageTitle %>">
+	<meta property="og:description" content="<%= desc %>">
+	<% if (typeof ogImage !== 'undefined' && ogImage) { %>
+	<meta property="og:image" content="<%= ogImage %>">
+	<% } else { %>
+	<meta property="og:image" content="/icons/logo.png">
+	<% } %>
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="<%= pageTitle %>">
+	<meta name="twitter:description" content="<%= desc %>">
 	<link rel="apple-touch-icon" href="/icons/logo.png">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title><%- title %></title>
-	<link rel="shortcut icon" href="/icons/icon-72x72.png" type="image/png" />
-	<link rel="manifest" href="/manifest.json"> 
-	<script defer src="/index.js"></script>
+	<link rel="shortcut icon" href="/icons/icon-72x72.png" type="image/png">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="stylesheet" href="/index.css">
+	<script defer src="/index.js"></script>
 </head>
 <body>
-<header>
-	<div>
-		<a href="/movies"><h1> <img class="logo" src="/icons/logo.png" alt="logo"> Which Movies</h1></a>
-	</div>
-	<nav>	
-		<a href="/movies/genres">Genres</a>
-		<form method="get" action="/movies/search">
-			<label for="search">search</label>
-			<input id="search" type="search" name="query">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header id="site-header">
+	<a href="/movies" class="brand" aria-label="Which Movies home">
+		<img class="logo" src="/icons/logo.png" alt="" width="36" height="36">
+		<h1>Which Movies</h1>
+	</a>
+	<div class="header-right">
+		<nav aria-label="Main navigation" id="main-nav">
+			<a href="/movies" class="nav-link">Home</a>
+			<a href="/movies/genres" class="nav-link">Genres</a>
+		</nav>
+		<form method="get" action="/movies/search" class="search-box" role="search">
+			<label for="search">Search</label>
+			<i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+			<input id="search" type="search" name="query" placeholder="Search movies..." autocomplete="off" required>
 		</form>
-	</nav>
+		<button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
+			<span class="menu-bar"></span>
+			<span class="menu-bar"></span>
+			<span class="menu-bar"></span>
+		</button>
+	</div>
 </header>
-<main>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+	<a href="/movies" class="drawer-link"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
+	<a href="/movies/genres" class="drawer-link"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Genres</a>
+</nav>

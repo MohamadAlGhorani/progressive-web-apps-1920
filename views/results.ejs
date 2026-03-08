@@ -1,16 +1,66 @@
-<%- include ./partials/head.ejs %>
-<a class="back-btn" href="/movies">back</a>
-<section>
-<h2>Results for <%= query %></h2>
-<div>
-<% moviesData.forEach(function(movie) { %>
-	<a href="/movies/<%- movie.id %>">
-		<p><%- movie.vote_average %></p>
-		<img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="Movie poster of <%= movie.original_title %>." class="movie-poster">
-		<p><%- movie.title %></p>
-		<p><%- movie.release_date %></p>
-	</a>
-<% }) %>
-</div>
+<%- include('./partials/head.ejs') %>
+
+<main id="main-content">
+<% if (topPick) { %>
+<section class="search-hero" aria-label="Best match">
+	<img class="search-hero-bg" src="https://image.tmdb.org/t/p/original/<%= topPick.backdrop_path %>" alt="">
+	<div class="search-hero-overlay"></div>
+	<div class="search-hero-content">
+		<a class="back-btn back-btn-light" href="/movies"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</a>
+		<div class="search-hero-label"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Best Match for "<%= query %>"</div>
+		<h1 class="search-hero-title"><%= topPick.title %></h1>
+		<div class="search-hero-meta">
+			<span class="search-hero-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> <%= topPick.vote_average ? topPick.vote_average.toFixed(1) : 'N/A' %></span>
+			<% if (topPick.release_date) { %>
+			<span class="search-hero-year"><%= topPick.release_date.substring(0, 4) %></span>
+			<% } %>
+			<span class="search-hero-count"><%= totalResults %> result<%= totalResults !== 1 ? 's' : '' %> found</span>
+		</div>
+		<p class="search-hero-overview"><%= topPick.overview %></p>
+		<a href="/movies/<%= topPick.id %>" class="btn btn-primary"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> View Details</a>
+	</div>
 </section>
-<%- include ./partials/footer.ejs %>
+<% } %>
+
+<div class="page-content<%= topPick ? ' page-content-after-banner' : '' %>">
+	<% if (!topPick) { %>
+	<a class="back-btn" href="/movies"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</a>
+	<% } %>
+
+	<% if (moviesData.length) { %>
+	<section class="section" aria-label="Search results">
+		<div class="section-header">
+			<h2 class="section-title"><span class="accent-bar"></span><%= topPick ? 'More Results' : 'Results for "' + query + '"' %></h2>
+			<% if (!topPick) { %>
+			<span class="result-count"><%= totalResults %> result<%= totalResults !== 1 ? 's' : '' %></span>
+			<% } %>
+		</div>
+		<div class="movie-grid">
+			<% moviesData.forEach(function(movie) { %>
+			<a href="/movies/<%= movie.id %>" class="movie-card" aria-label="<%= movie.title %>">
+				<% if (movie.poster_path) { %>
+				<img class="poster" src="https://image.tmdb.org/t/p/w342/<%= movie.poster_path %>" alt="Poster of <%= movie.title %>" loading="lazy">
+				<% } else { %>
+				<div class="poster no-poster"><i class="fa-solid fa-film" aria-hidden="true"></i></div>
+				<% } %>
+				<div class="card-info">
+					<div class="card-title"><%= movie.title %></div>
+					<div class="card-meta">
+						<span class="card-date"><%= movie.release_date ? movie.release_date.substring(0, 4) : '' %></span>
+						<span class="card-rating"><%= movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A' %></span>
+					</div>
+				</div>
+			</a>
+			<% }) %>
+		</div>
+	</section>
+	<% } else if (!topPick) { %>
+	<div class="empty-state">
+		<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+		<p>No movies found for "<%= query %>"</p>
+	</div>
+	<% } %>
+</div>
+</main>
+
+<%- include('./partials/footer.ejs') %>

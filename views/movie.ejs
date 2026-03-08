@@ -1,18 +1,99 @@
-<%- include ./partials/head.ejs %>
-<a class="back-btn" href="/movies">back</a>
-<h2><%- movie.title %></h2>
-<p class="overview"><%- movie.overview %></p>
-<p class="rating">Rating: <span><%= movie.vote_average %></span></p>
+<%- include('./partials/head.ejs') %>
 
+<main id="main-content">
+<section class="detail-backdrop" aria-label="Movie backdrop">
+	<% if (movie.trailer) { %>
+	<div class="backdrop-video" id="trailer-wrap">
+		<iframe
+			id="trailer-player"
+			src="https://www.youtube-nocookie.com/embed/<%= movie.trailer.key %>?autoplay=1&mute=1&controls=0&loop=1&playlist=<%= movie.trailer.key %>&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&origin=<%= typeof origin !== 'undefined' ? origin : '' %>"
+			allow="autoplay; encrypted-media"
+			allowfullscreen
+			aria-label="Movie trailer"
+		></iframe>
+	</div>
+	<% } else if (movie.backdrop_path) { %>
+	<img class="backdrop-img" src="https://image.tmdb.org/t/p/original/<%= movie.backdrop_path %>" alt="">
+	<% } %>
+	<div class="detail-overlay"></div>
+	<div class="detail-content">
+		<h1 class="detail-title"><%= movie.title %></h1>
+		<div class="detail-meta">
+			<span class="rating-badge"><i class="fa-solid fa-star" aria-hidden="true"></i> <%= movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A' %></span>
+			<% if (movie.release_date) { %>
+			<span class="meta-item"><i class="fa-regular fa-calendar" aria-hidden="true"></i> <%= movie.release_date %></span>
+			<% } %>
+			<% if (movie.runtime) { %>
+			<span class="meta-item"><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= Math.floor(movie.runtime / 60) %>h <%= movie.runtime % 60 %>m</span>
+			<% } %>
+			<% if (movie.vote_count) { %>
+			<span class="meta-item"><%= movie.vote_count.toLocaleString() %> votes</span>
+			<% } %>
+		</div>
+		<div class="detail-genres">
+			<% (movie.genreNames || []).forEach(function(g) { %>
+			<span class="detail-genre-tag"><%= g %></span>
+			<% }) %>
+		</div>
+		<p class="detail-overview"><%= movie.overview %></p>
+		<div class="detail-actions">
+			<a href="/movies" class="btn btn-ghost"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</a>
+			<% if (movie.homepage) { %>
+			<a href="<%= movie.homepage %>" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-external-link" aria-hidden="true"></i> Official Site</a>
+			<% } %>
+		</div>
+	</div>
+	<% if (movie.trailer) { %>
+	<button class="btn-icon detail-mute" id="mute-toggle" aria-label="Unmute trailer">
+		<i class="fa-solid fa-volume-xmark" aria-hidden="true"></i>
+	</button>
+	<% } %>
+</section>
 
-<%
-  if (movie.videos.length) {
-  const video = movie.videos.find(video => video.type === 'Trailer') || movie.videos[0]
-%>
-    <h2><%= video.name %></h2>
-    <div class="video">
-        <iframe width="100%" height="800px" src="https://www.youtube-nocookie.com/embed/<%= video.key %>?modestbranding=1&autoplay=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&disablekb=1&playlist=IsBInsOj8TY" frameborder="0"></iframe>
-    </div>
-<% } %>
+<div class="detail-body">
+	<% if (movie.cast && movie.cast.length) { %>
+	<section class="detail-section" aria-label="Cast">
+		<h2 class="detail-section-title"><span class="accent-bar"></span>Cast</h2>
+		<div class="cast-row">
+			<% movie.cast.forEach(function(person) { %>
+			<div class="cast-card">
+				<% if (person.profile_path) { %>
+				<img class="cast-photo" src="https://image.tmdb.org/t/p/w185/<%= person.profile_path %>" alt="<%= person.name %>" loading="lazy">
+				<% } else { %>
+				<div class="cast-photo no-photo"><i class="fa-solid fa-user" aria-hidden="true"></i></div>
+				<% } %>
+				<div class="cast-name"><%= person.name %></div>
+				<div class="cast-character"><%= person.character %></div>
+			</div>
+			<% }) %>
+		</div>
+	</section>
+	<% } %>
 
-<%- include ./partials/footer.ejs %>
+	<% if (movie.similar && movie.similar.length) { %>
+	<section class="detail-section" aria-label="Similar movies">
+		<h2 class="detail-section-title"><span class="accent-bar"></span>Similar Movies</h2>
+		<div class="movie-row">
+			<% movie.similar.forEach(function(sim) { %>
+			<a href="/movies/<%= sim.id %>" class="movie-card" aria-label="<%= sim.title %>">
+				<% if (sim.poster_path) { %>
+				<img class="poster" src="https://image.tmdb.org/t/p/w342/<%= sim.poster_path %>" alt="Poster of <%= sim.title %>" loading="lazy">
+				<% } else { %>
+				<div class="poster no-poster"><i class="fa-solid fa-film" aria-hidden="true"></i></div>
+				<% } %>
+				<div class="card-info">
+					<div class="card-title"><%= sim.title %></div>
+					<div class="card-meta">
+						<span class="card-date"><%= sim.release_date ? sim.release_date.substring(0, 4) : '' %></span>
+						<span class="card-rating"><%= sim.vote_average ? sim.vote_average.toFixed(1) : 'N/A' %></span>
+					</div>
+				</div>
+			</a>
+			<% }) %>
+		</div>
+	</section>
+	<% } %>
+</div>
+</main>
+
+<%- include('./partials/footer.ejs') %>

@@ -1,17 +1,77 @@
-<%- include ./partials/head.ejs %>
-<a class="back-btn" href="/movies/genres">back</a>
-<section>
-<h2><%= genreName %></h2>
-<div>
-<% moviesData.forEach(function(movie) { %>
-    <a href="/movies/<%- movie.id %>">
-		<p><%- movie.vote_average %></p>
-		<img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="Movie poster of <%= movie.original_title %>." class="movie-poster">
-		<p><%- movie.title %></p>
-		<p><%- movie.release_date %></p>
-	</a>
-<% }) %>
-</div>
-</section>
+<%- include('./partials/head.ejs') %>
 
-<%- include ./partials/footer.ejs %>
+<main id="main-content">
+<% if (featured.length) { %>
+<section class="featured-banner" aria-label="Top rated in <%= genreName %>">
+	<img class="featured-bg" src="https://image.tmdb.org/t/p/original/<%= featured[0].backdrop_path %>" alt="">
+	<div class="featured-overlay"></div>
+	<div class="featured-content">
+		<a class="back-btn back-btn-light" href="/movies/genres"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Genres</a>
+		<div class="featured-label"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Highest Rated</div>
+		<h1 class="featured-heading"><%= genreName %> Movies</h1>
+		<p class="featured-sub"><%= featured.length %> critically acclaimed picks in this genre</p>
+	</div>
+	<div class="featured-row-wrap">
+		<div class="featured-row">
+			<% featured.forEach(function(movie, i) { %>
+			<a href="/movies/<%= movie.id %>" class="featured-card" aria-label="<%= movie.title %>">
+				<div class="featured-rank"><%= i + 1 %></div>
+				<% if (movie.poster_path) { %>
+				<img class="featured-poster" src="https://image.tmdb.org/t/p/w342/<%= movie.poster_path %>" alt="Poster of <%= movie.title %>" loading="lazy">
+				<% } else { %>
+				<div class="featured-poster no-poster"><i class="fa-solid fa-film" aria-hidden="true"></i></div>
+				<% } %>
+				<div class="featured-card-info">
+					<div class="featured-card-title"><%= movie.title %></div>
+					<div class="featured-card-meta">
+						<span class="featured-card-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> <%= movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A' %></span>
+						<span class="featured-card-year"><%= movie.release_date ? movie.release_date.substring(0, 4) : '' %></span>
+					</div>
+					<p class="featured-card-overview"><%= movie.overview %></p>
+				</div>
+			</a>
+			<% }) %>
+		</div>
+	</div>
+</section>
+<% } %>
+
+<div class="page-content<%= featured.length ? ' page-content-after-banner' : '' %>">
+	<% if (!featured.length) { %>
+	<a class="back-btn" href="/movies/genres"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Genres</a>
+	<% } %>
+
+	<% if (moviesData.length) { %>
+	<section class="section" aria-label="More <%= genreName %> movies">
+		<div class="section-header">
+			<h2 class="section-title"><span class="accent-bar"></span>More in <%= genreName %></h2>
+		</div>
+		<div class="movie-grid">
+			<% moviesData.forEach(function(movie) { %>
+			<a href="/movies/<%= movie.id %>" class="movie-card" aria-label="<%= movie.title %>">
+				<% if (movie.poster_path) { %>
+				<img class="poster" src="https://image.tmdb.org/t/p/w342/<%= movie.poster_path %>" alt="Poster of <%= movie.title %>" loading="lazy">
+				<% } else { %>
+				<div class="poster no-poster"><i class="fa-solid fa-film" aria-hidden="true"></i></div>
+				<% } %>
+				<div class="card-info">
+					<div class="card-title"><%= movie.title %></div>
+					<div class="card-meta">
+						<span class="card-date"><%= movie.release_date ? movie.release_date.substring(0, 4) : '' %></span>
+						<span class="card-rating"><%= movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A' %></span>
+					</div>
+				</div>
+			</a>
+			<% }) %>
+		</div>
+	</section>
+	<% } else if (!featured.length) { %>
+	<div class="empty-state">
+		<i class="fa-solid fa-film" aria-hidden="true"></i>
+		<p>No movies found in this genre.</p>
+	</div>
+	<% } %>
+</div>
+</main>
+
+<%- include('./partials/footer.ejs') %>

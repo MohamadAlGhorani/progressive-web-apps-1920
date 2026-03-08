@@ -6,10 +6,10 @@ const cleanCSS = require("gulp-clean-css");
 return gulp
   .src(["./src/css/*.css"])
   .pipe(concat("index.css"))
-  .pipe(cleanCSS())
   .pipe(
     autoprefixer({
       cascade: false
     })
   )
+  .pipe(cleanCSS())
   .pipe(gulp.dest("./static/"));

@@ -1,8 +1,38 @@
-<%- include ./partials/head.ejs %>
-<a class="back-btn" href="/movies">back</a>
-<h2>Genres</h2>
-<% genresData.genres.forEach(function(genre) { %>
-	<a href="/movies/genres/<%= genre.name %>/<%= genre.id %>"><%- genre.name %></a>
-<% }) %>
+<%- include('./partials/head.ejs') %>
 
-<%- include ./partials/footer.ejs %>
+<main id="main-content">
+<div class="genres-page">
+	<div class="genres-hero">
+		<div class="genres-hero-content">
+			<a class="back-btn back-btn-light" href="/movies"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</a>
+			<h1 class="genres-hero-title">Explore Genres</h1>
+			<p class="genres-hero-sub">Discover movies by the genres you love</p>
+		</div>
+	</div>
+
+	<div class="genres-grid-wrap">
+		<% genres.forEach(function(genre) { %>
+		<a href="/movies/genres/<%= genre.name %>/<%= genre.id %>" class="genre-card" aria-label="<%= genre.name %>">
+			<% if (genre.backdrop) { %>
+			<img class="genre-card-bg" src="https://image.tmdb.org/t/p/w780/<%= genre.backdrop %>" alt="" loading="lazy">
+			<% } %>
+			<div class="genre-card-overlay"></div>
+			<div class="genre-card-content">
+				<span class="genre-card-name"><%= genre.name %></span>
+				<% if (genre.movies.length) { %>
+				<div class="genre-card-thumbs">
+					<% genre.movies.slice(0, 3).forEach(function(m) { %>
+					<% if (m.poster_path) { %>
+					<img class="genre-card-thumb" src="https://image.tmdb.org/t/p/w92/<%= m.poster_path %>" alt="<%= m.title %>" loading="lazy">
+					<% } %>
+					<% }) %>
+				</div>
+				<% } %>
+			</div>
+		</a>
+		<% }) %>
+	</div>
+</div>
+</main>
+
+<%- include('./partials/footer.ejs') %>
